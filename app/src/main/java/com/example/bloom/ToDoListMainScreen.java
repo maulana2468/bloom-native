@@ -176,7 +176,7 @@ public class ToDoListMainScreen extends AppCompatActivity {
         Button next = findViewById(R.id.nextB);
         create_Task = findViewById(R.id.create_Task);
 
-        ConstraintLayout back = findViewById(R.id.back_todolist_mainscreen);
+        Button back = findViewById(R.id.back_todolist_mainscreen);
 
 
         LinearSnapHelper snapHelper = new LinearSnapHelper();

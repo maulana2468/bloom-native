@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<Button
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:layout_width="32sp"
-        android:layout_height="32sp"
-        android:layout_marginTop="65dp"
-        android:backgroundTint="#F7E353"
-        android:drawableLeft="@drawable/back"
-        android:drawablePadding="10dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+    android:layout_width="32sp"
+    android:layout_height="32sp"
+    android:layout_marginTop="65dp"
+    android:backgroundTint="#F7E353"
+    android:drawableLeft="@drawable/back"
+    android:drawablePadding="10dp"
+    android:insetTop="0dp"
+    android:insetBottom="0dp"
+    android:paddingStart="10dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.084"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
