@@ -1,6 +1,7 @@
 package com.example.bloom;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -175,6 +176,8 @@ public class ToDoListMainScreen extends AppCompatActivity {
         Button next = findViewById(R.id.nextB);
         create_Task = findViewById(R.id.create_Task);
 
+        ConstraintLayout back = findViewById(R.id.back_todolist_mainscreen);
+
 
         LinearSnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(rvCalendar);
@@ -208,6 +211,14 @@ public class ToDoListMainScreen extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
 

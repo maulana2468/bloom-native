@@ -23,22 +23,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonback"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:layout_width="32sp"
-        android:layout_height="32sp"
-        android:layout_marginTop="65dp"
-        android:backgroundTint="#F7E353"
-        android:drawableLeft="@drawable/back"
-        android:drawablePadding="10dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/back_timeplay_screen"
+        layout="@layout/back"/>
 
 
 

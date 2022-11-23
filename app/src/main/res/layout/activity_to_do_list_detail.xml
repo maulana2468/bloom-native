@@ -6,22 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ToDoListMainScreen">
 
-    <Button
-        android:id="@+id/buttonback"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:layout_width="32sp"
-        android:layout_height="32sp"
-        android:layout_marginTop="65dp"
-        android:backgroundTint="#F7E353"
-        android:drawableLeft="@drawable/back"
-        android:drawablePadding="10dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/back_todolist_detail"
+        layout="@layout/back" />
 
     <ImageButton
         android:id="@+id/buttondelete"
@@ -50,11 +37,11 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="136dp"
         android:id="@+id/tag_type"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="136dp"
         app:cardBackgroundColor="@color/light_red"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
@@ -75,6 +62,7 @@
             android:textSize="10sp" />
     </androidx.cardview.widget.CardView>
 
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -86,17 +74,16 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.175" />
 
-
     <TextView
         android:id="@+id/tanggal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
         android:layout_marginEnd="188dp"
         android:drawableLeft="@drawable/ic_calendar"
         android:drawablePadding="5dp"
@@ -106,15 +93,13 @@
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/jam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="316dp"
         android:drawableLeft="@drawable/ic_clock"
         android:drawablePadding="5dp"
         android:fontFamily="@font/poppins_regular"
@@ -122,7 +107,8 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.003"
+        app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintTop_toBottomOf="@+id/tanggal" />
 
     <TextView
@@ -134,9 +120,9 @@
         android:text="@string/deskripsi"
         android:textColor="@color/black"
         android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintTop_toBottomOf="@+id/jam" />
 
     <TextView
@@ -147,8 +133,9 @@
         android:fontFamily="@font/poppins_regular"
         android:text="@string/isi"
         android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button

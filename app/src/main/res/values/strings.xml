@@ -88,5 +88,7 @@
     <string name="prev">PREV</string>
     <string name="next">NEXT</string>
     <string name="my_task">My task</string>
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>

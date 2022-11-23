@@ -25,22 +25,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonback"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:layout_width="32sp"
-        android:layout_height="32sp"
-        android:layout_marginTop="65dp"
-        android:backgroundTint="#F7E353"
-        android:drawableLeft="@drawable/back"
-        android:drawablePadding="10dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/back_create_todolist"
+        layout="@layout/back"/>
 
     <TextView
         android:id="@+id/tv_title"
@@ -169,7 +156,7 @@
 
     <Button
         android:id="@+id/save"
-        android:layout_width="378dp"
+        android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="#000000"
@@ -184,7 +171,7 @@
 
     <Button
         android:id="@+id/cancle"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#FFFFFF"

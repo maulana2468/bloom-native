@@ -7,14 +7,9 @@
     android:background="#FEF5B6"
     tools:context=".TimePlay">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="65dp"
-        android:background="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/back_time_play"
+        layout="@layout/back"/>
 
     <TextView
         android:id="@+id/judul"
