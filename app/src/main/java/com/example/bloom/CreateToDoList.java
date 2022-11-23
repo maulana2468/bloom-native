@@ -56,6 +56,7 @@ public class CreateToDoList extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         binding = ActivityCreateToDoListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Button back = findViewById(R.id.back_create_todolist);
 
         getSupportActionBar().hide();
 
@@ -88,6 +89,13 @@ public class CreateToDoList extends AppCompatActivity{
                 binding.tags.setText("Important");
             } else {
                 binding.tags.setText("Basic");
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

@@ -52,6 +52,7 @@ public class TimePlayScreen extends AppCompatActivity implements RvInterface {
         setContentView(R.layout.activity_time_play_sceen);
         Objects.requireNonNull(getSupportActionBar()).hide();
         db = (new DBHelper(this)).getWritableDatabase();
+        Button back = findViewById(R.id.back_timeplay_screen);
         //timer atas
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
@@ -99,6 +100,13 @@ public class TimePlayScreen extends AppCompatActivity implements RvInterface {
             i.putExtra("TIMER", data);
 
             startActivity(i);
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
         });
 
 

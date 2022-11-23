@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.bloom.databinding.ActivityToDoListDetailBinding;
@@ -30,6 +32,8 @@ public class ToDoListDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityToDoListDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Button back = findViewById(R.id.back_todolist_detail);
 
         db = (new DBHelper(this)).getWritableDatabase();
 
@@ -65,6 +69,13 @@ public class ToDoListDetail extends AppCompatActivity {
 
             finish();
             Toast.makeText(getApplicationContext(), "Task \"" + taskData.nama + "\" telah terhapus", Toast.LENGTH_SHORT).show();
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
         });
     }
 }

@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -53,6 +54,7 @@ public class TimePlay extends AppCompatActivity {
         dataTimer = getIntent().getParcelableExtra("TIMER");
         dataTimer.durasi = 1;
         textBreaks = findViewById(R.id.breaksText);
+        Button back = findViewById(R.id.back_time_play);
 
         judul.setText(dataTimer.nama);
         //currentTime = 0L;
@@ -73,6 +75,13 @@ public class TimePlay extends AppCompatActivity {
                 stopTimer();
             } else {
                 startTimer(currentTime);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
@@ -137,6 +146,7 @@ public class TimePlay extends AppCompatActivity {
         progressBar.setProgress((int) ((a / (dataTimer.durasi*60.0)) * 100000),true);
 
     }
+
 
     private void setNotification(String detail) {
         createNotificationDetail();

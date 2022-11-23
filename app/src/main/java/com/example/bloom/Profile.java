@@ -26,6 +26,15 @@ public class Profile extends AppCompatActivity {
         Button logout = (Button) findViewById(R.id.logout);
         TextView countTaskC = (TextView) findViewById(R.id.task_completed);
         TextView hourTimer = findViewById(R.id.focus_timer);
+        Button back = findViewById(R.id.back_profile);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
