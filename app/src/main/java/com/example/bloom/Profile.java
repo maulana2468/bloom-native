@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.w3c.dom.Text;
+
 public class Profile extends AppCompatActivity {
 
     private SharedPreferences sharedpreferences;
@@ -27,6 +29,7 @@ public class Profile extends AppCompatActivity {
         TextView countTaskC = (TextView) findViewById(R.id.task_completed);
         TextView hourTimer = findViewById(R.id.focus_timer);
         Button back = findViewById(R.id.back_profile);
+        TextView editButton = findViewById(R.id.button2);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +48,11 @@ public class Profile extends AppCompatActivity {
                 startActivity(i);
                 finishAffinity();
             }
+        });
+
+        editButton.setOnClickListener(v -> {
+            Intent i = new Intent(Profile.this, EditProfile.class);
+            startActivity(i);
         });
 
         SQLiteDatabase db = (new DBHelper(this)).getReadableDatabase();

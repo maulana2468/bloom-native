@@ -117,6 +117,7 @@ public class Dashboard extends AppCompatActivity {
         username.setText(auth.getCurrentUser().getDisplayName());
         email.setText(auth.getCurrentUser().getEmail());
 
+
         rvListDashboard.setLayoutManager(new LinearLayoutManager(this));
         rvListDashboard.setHasFixedSize(false);
         listTaskDataAdapter = new ListTaskDataAdapter(new ArrayList<>());
