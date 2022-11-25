@@ -11,15 +11,19 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
@@ -110,12 +114,17 @@ public class Dashboard extends AppCompatActivity {
         TextView username = (TextView) findViewById(R.id.username);
         TextView email = (TextView) findViewById(R.id.email);
         ImageButton setting = (ImageButton) findViewById(R.id.setting);
+        ImageView pict = findViewById(R.id.imageView3);
         LinearLayout toDoListLayout  = (LinearLayout) findViewById(R.id.todolistLayout);
         rvListDashboard = findViewById(R.id.rv_task_dashboard);
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         username.setText(auth.getCurrentUser().getDisplayName());
         email.setText(auth.getCurrentUser().getEmail());
+
+        if (!Uri.EMPTY.equals(auth.getCurrentUser().getPhotoUrl())) {
+            Glide.with(this).load(auth.getCurrentUser().getPhotoUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(pict);
+        }
 
 
         rvListDashboard.setLayoutManager(new LinearLayoutManager(this));

@@ -1,5 +1,6 @@
 package com.example.bloom;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +22,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.bloom.databinding.ActivityEditProfileBinding;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.sangcomz.fishbun.FishBun;
 import com.sangcomz.fishbun.MimeType;
 import com.sangcomz.fishbun.adapter.image.impl.GlideAdapter;
@@ -40,6 +49,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfile extends AppCompatActivity {
 
+    private EditText nameTemp;
     private ActivityEditProfileBinding binding;
     private Uri destinationUri;
     private static final String SAMPLE_CROPPED_IMAGE_NAME = "SampleCropImage";
@@ -69,8 +79,16 @@ public class EditProfile extends AppCompatActivity {
         binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Button back = findViewById(R.id.back_edit_profile);
+        EditText name = findViewById(R.id.edit_nama);
 
         getSupportActionBar().hide();
+
+        ImageView photo = findViewById(R.id.photo);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (!Uri.EMPTY.equals(auth.getCurrentUser().getPhotoUrl())) {
+            Glide.with(this).load(auth.getCurrentUser().getPhotoUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(photo);
+        }
 
         binding.changeProfile.setOnClickListener(v -> {
 
@@ -80,6 +98,19 @@ public class EditProfile extends AppCompatActivity {
                     .setMaxCount(1)
                     .setMinCount(1)
                     .startAlbumWithOnActivityResult(7);
+        });
+
+        binding.saveName.setOnClickListener(v -> {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (!binding.editNama.getText().toString().isEmpty()) {
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(binding.editNama.getText().toString().trim())
+                        .build();
+
+                update(user, profileUpdates);
+            } else {
+                Snackbar.make(binding.getRoot(), "Nama tidak boleh kosong", Snackbar.LENGTH_LONG);
+            }
         });
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -122,20 +153,67 @@ public class EditProfile extends AppCompatActivity {
         });
 
         save.setOnClickListener(v -> {
-            FirebaseAuth user = FirebaseAuth.getInstance();
+            dialog.dismiss();
+            binding.photo.setVisibility(View.GONE);
+            binding.loadingLoadPp.setVisibility(View.VISIBLE);
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+
+            StorageReference storageRef = storage.getReference();
+            StorageReference profilePictRef = storageRef.child("profilePicture/" + user.getUid() + ".png");
+            UploadTask uploadTask = profilePictRef.putFile(tempUri);
+
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        Snackbar.make(binding.getRoot(), task.getException().toString(), Snackbar.LENGTH_SHORT).show();
+                    }
+
+                    // Continue with the task to get the download URL
+                    return profilePictRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setPhotoUri(Uri.parse(String.valueOf(downloadUri)))
+                                .build();
+
+                        update(user, profileUpdates);
+                    } else {
+                        Snackbar.make(binding.getRoot(), task.getException().toString(), Snackbar.LENGTH_SHORT).show();
+                    }
+                }
+            });
 
 
 
-            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                    .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
-                    .build();
 
-            finish();
         });
 
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
 
         dialog.show();
+    }
+
+    private void update(FirebaseUser user, UserProfileChangeRequest profileUpdates) {
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Ganti data berhasil", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(EditProfile.this, Dashboard.class));
+                        } else {
+                            Snackbar.make(binding.getRoot(), task.getException().toString(), Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

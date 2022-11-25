@@ -15,7 +15,7 @@
         android:layout_height="1000dp"
         tools:context=".Dashboard">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
