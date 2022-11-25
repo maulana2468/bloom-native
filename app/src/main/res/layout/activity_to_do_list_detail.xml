@@ -22,19 +22,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/buttonshare"
-        android:layout_width="32sp"
-        android:layout_height="32sp"
-        android:layout_marginTop="65dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/share_filled"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:paddingStart="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/buttondelete"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/tag_type"

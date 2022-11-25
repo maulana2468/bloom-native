@@ -58,13 +58,7 @@
             android:name=".Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Habbit"
-            android:exported="false" />
-        <activity
             android:name=".CreateToDoList"
-            android:exported="false" />
-        <activity
-            android:name=".DetailTracker"
             android:exported="false" />
         <activity
             android:name=".ToDoListMainScreen"
