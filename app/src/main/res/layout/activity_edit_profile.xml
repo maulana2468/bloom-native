@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <include
-        android:id="@+id/back_profile"
+        android:id="@+id/back_edit_profile"
         layout="@layout/back"/>
 
     <ImageView
@@ -58,6 +58,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/editTitle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/back_edit_profile"
         app:layout_constraintTop_toBottomOf="@+id/photo" />
 
     <EditText
@@ -66,12 +67,13 @@
         android:layout_height="42dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/input_habit"
-        android:paddingHorizontal="10dp"
-        android:hint="Change Name"
         android:ems="10"
         android:fontFamily="@font/poppins_regular"
+        android:hint="Change Name"
         android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/name"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <Button

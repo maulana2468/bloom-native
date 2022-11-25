@@ -68,6 +68,7 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Button back = findViewById(R.id.back_edit_profile);
 
         getSupportActionBar().hide();
 
@@ -79,6 +80,13 @@ public class EditProfile extends AppCompatActivity {
                     .setMaxCount(1)
                     .setMinCount(1)
                     .startAlbumWithOnActivityResult(7);
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
         });
     }
 
