@@ -52,7 +52,7 @@ public class TimePlay extends AppCompatActivity {
         TextView judul = findViewById(R.id.judul) ;
         time = findViewById(R.id.timerlaknat);
         dataTimer = getIntent().getParcelableExtra("TIMER");
-        
+
         textBreaks = findViewById(R.id.breaksText);
         Button back = findViewById(R.id.back_time_play);
 
