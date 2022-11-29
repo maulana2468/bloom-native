@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github/bloom-native/app/src/main/res/drawable/bg_popup.xml" value="0.1935" />
         <entry key="..\:/Github/bloom-native/app/src/main/res/layout/activity_create_new_acc.xml" value="0.2269021739130435" />
         <entry key="..\:/Github/bloom-native/app/src/main/res/layout/activity_create_to_do_list.xml" value="0.264" />
         <entry key="..\:/Github/bloom-native/app/src/main/res/layout/activity_create_tracker.xml" value="0.2269021739130435" />
@@ -24,6 +25,7 @@
         <entry key="..\:/Github/bloom-native/app/src/main/res/layout/date_card.xml" value="0.2269021739130435" />
         <entry key="..\:/Github/bloom-native/app/src/main/res/layout/dialog_timer_delete.xml" value="0.2269021739130435" />
         <entry key="..\:/Github/bloom-native/app/src/main/res/layout/popup.xml" value="0.2269021739130435" />
+        <entry key="..\:/Github/bloom-native/app/src/main/res/layout/popup_changed_pict.xml" value="0.25" />
         <entry key="..\:/Github/bloom-native/app/src/main/res/layout/tasklist.xml" value="0.2269021739130435" />
         <entry key="..\:/Github/bloom-native/app/src/main/res/layout/timerlist.xml" value="0.2269021739130435" />
       </map>
